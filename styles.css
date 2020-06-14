@@ -7,6 +7,16 @@
   padding: 0;
 }
 
+::-moz-selection {
+  background-color: #9fafc0;
+  color: white;
+}
+
+::selection {
+  background-color: #9fafc0;
+  color: white;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -109,11 +119,17 @@ body {
 }
 
 .code-result > .code-result__content {
+  width: 100%;
   height: 30vh;
+  background-color: #cfdff0;
+  border: none;
+  border-radius: 15px;
   color: #9fafc0;
+  cursor: default;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 20px;
+  resize: none;
   z-index: 3;
 }
 

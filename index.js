@@ -1,63 +1,35 @@
-var codeCSS = `
-#menu-vertical {
-	width: 75px;
-	height: 100vh;
-	background-color: rgba(10, 11, 12, 0.9);
-	box-shadow: 5px 0px 0px rgba(119, 204, 255, 0.7);
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 100;
-}
-#menu-vertical > #menu-web {
-	list-style-type: none;
-	list-style-position: inside;
-	margin: 0;
-	padding: 0;
-}
-#menu-vertical > #menu-web li {
-	width: 100%;
-	height: 75px;
-	position: relative;
-	transform: translate3d(0, 3000px, 0);
-	animation: bounceInUp 0.3s;
-	animation-fill-mode: forwards;
-}
-#menu-vertical > #menu-web li:nth-of-type(1) {
-	animation-delay: 0.1s;
-}
-#menu-vertical > #menu-web li:nth-of-type(2) {
-	animation-delay: 0.2s;
-}
-#menu-vertical > #menu-web li:nth-of-type(3) {
-	animation-delay: 0.3s;
-}
-#menu-vertical > #menu-web li:nth-of-type(4) {
-	animation-delay: 0.4s;
-}
-#menu-vertical > #menu-web li:nth-of-type(5) {
-	animation-delay: 0.5s;
-}
-#menu-vertical > #menu-web li:nth-of-type(6) {
-	animation-delay: 0.6s;
-}
-.test1,
-.test2,
-.test3 {
-  color: red;
-}
-`;
-
-var loading = false
+/** Script JS */
+var loading     = false
 var beforeBytes = 0
-var afterBytes = 0
-var percentage = 0
+var afterBytes  = 0
+var percentage  = 0
 
 window.onload = function () {
-  var codeInput = document.querySelector('.code-input')
-  var codeCompress = document.querySelector('.code-compress')
+  var codeInput         = document.querySelector('.code-input')
+  var codeCompress      = document.querySelector('.code-compress')
+  var codeResultContent = document.querySelector('.code-result__content')
+  var copybutton        = document.querySelector('.copy-btn')
+  var resetButton       = document.querySelector('.reset-btn')
+  var compressionValue  = document.querySelector('.compression-value')
+  var compressionLevel  = document.querySelector('.compression-level')
+  var compressionIcons  = document.querySelector('.compression-icons')
 
   codeInput.focus()
+
+  copybutton.onclick = function () {
+    copyToClipboard(codeResultContent)
+  }
+
+  resetButton.onclick = function () {
+    codeResultContent.innerHTML = ''
+
+    compressionValue.classList.remove('show')
+    compressionLevel.classList.remove('show')
+    compressionIcons.classList.remove('show')
+
+    codeInput.value = ''
+    codeInput.focus()
+  }
 
   codeInput.onkeyup = function (event) {
     if (event.keyCode === 13) {
@@ -71,10 +43,6 @@ window.onload = function () {
     checkLoading(loading)
 
     setTimeout(function () {
-      var codeResultContent = document.querySelector('.code-result__content')
-      var compressionValue = document.querySelector('.compression-value')
-      var compressionLevel = document.querySelector('.compression-level')
-      var compressionIcons = document.querySelector('.compression-icons')
       var compressionLevelBar = document.querySelector('.compression-level__bar')
 
       compressCss(codeInput.value).then(function (result) {
@@ -152,4 +120,10 @@ function checkLoading (state) {
     button.classList.remove('hide')
     codeInput.removeAttribute('disabled')
   }
+}
+
+function copyToClipboard (element) {
+  element.select()
+  element.setSelectionRange(0, 99999) /*For mobile devices*/
+  document.execCommand('copy')
 }
