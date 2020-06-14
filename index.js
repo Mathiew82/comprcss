@@ -49,6 +49,9 @@ var codeCSS = `
 `;
 
 var loading = false
+var beforeBytes = 0
+var afterBytes = 0
+var percentage = 0
 
 window.onload = function () {
   var codeInput = document.querySelector('.code-input')
@@ -68,24 +71,35 @@ window.onload = function () {
     checkLoading(loading)
 
     setTimeout(function () {
-      var codeResult = document.querySelector('.code-result')
+      var codeResultContent = document.querySelector('.code-result__content')
+      var compressionValue = document.querySelector('.compression-value')
+      var compressionLevel = document.querySelector('.compression-level')
+      var compressionIcons = document.querySelector('.compression-icons')
+      var compressionLevelBar = document.querySelector('.compression-level__bar')
+
       compressCss(codeInput.value).then(function (result) {
-        codeResult.innerHTML = result
+        codeResultContent.innerHTML = result
 
         loading = false
         checkLoading(loading)
 
+        compressionValue.classList.add('show')
+        compressionValue.innerHTML = '<span class="compression-value__percentage">' + percentage + '%</span> de compresión | ' + beforeBytes + ' > ' + afterBytes + ' (bytes)'
+
+        compressionLevel.classList.add('show')
+        compressionLevelBar.style.width = percentage + '%'
+
+        compressionIcons.classList.add('show')
+
         codeInput.value = ''
         codeInput.focus()
       })
-    }, 2000)
+    }, 1000)
   }
 }
 
 function compressCss (code) {
   return new Promise(function (resolve, reject) {
-    console.log(code.length)
-
     var result = ''
     var controlPoint = '}'
     
@@ -116,7 +130,9 @@ function compressCss (code) {
     result = result.replace(/ ~ /g, '~')
     result = result.replace(/, /g, ',')
 
-    console.log(result.length)
+    beforeBytes = code.length
+    afterBytes = result.length
+    percentage = 100 - parseInt(afterBytes * 100 / beforeBytes)
 
     resolve(result)
   })
