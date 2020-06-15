@@ -1,3 +1,4 @@
+@import 'variables';
 @import 'animations';
 
 * {
@@ -10,12 +11,12 @@
 }
 
 ::-moz-selection {
-  background-color: #5f6f80;
+  background-color: lighten($text-color, 30%);
   color: white;
 }
 
 ::selection {
-  background-color: #5f6f80;
+  background-color: lighten($text-color, 30%);
   color: white;
 }
 
@@ -29,12 +30,12 @@
 }
  
 ::-webkit-scrollbar-thumb {
-  background: #6f7f90;
+  background: lighten($text-color, 30%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1f2f40;
+  background: $text-color;
 }
 
 textarea:focus,
@@ -45,9 +46,32 @@ button:focus {
 }
 
 body {
-  background-color: #bfcfe0;
+  background-color: $primary-color;
   color: black;
   padding: 10vh 15%;
+}
+
+.notification {
+  background-color: rgba(0, 60, 90, .7);
+  border-radius: 6px;
+  color: white;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  opacity: 0;
+  padding: 12px 28px 12px 20px;
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  animation: show-notification .5s forwards;
+  transform: translateX(-50%);
+  z-index: 10;
+  > i {
+    font-size: 18px;
+    margin-right: 5px;
+  }
 }
 
 .wrapper-code-input {
@@ -58,21 +82,21 @@ body {
   > .code-input {
     width: 100%;
     height: 39vh;
-    background-color: #cfdff0;
+    background-color: lighten($primary-color, 15%);
     border: none;
     border-radius: 15px;
     box-shadow: 0 20px 50px rgba(141, 157, 174, .4);
-    color: #1f2f40;
+    color: $text-color;
     padding: 20px 20px 80px 20px;
     position: relative;
     resize: none;
     z-index: 1;
     &:disabled {
-      opacity: .5;
+      opacity: .7;
     }
   }
   > .code-compress {
-    background-color: #7559b1;
+    background-color: $secondary-color;
     border: 2px solid rgba(255, 255, 255, .9);
     border-radius: 6px;
     color: white;
@@ -90,7 +114,7 @@ body {
       display: none;
     }
     &:hover {
-      background-color: #9579d1;
+      background-color: darken($secondary-color, 10%);
       cursor: pointer;
     }
   }
@@ -99,7 +123,7 @@ body {
 .code-result {
   width: 100%;
   height: 39vh;
-  background-color: #c6d6e7;
+  background-color: lighten($primary-color, 8%);
   border-radius: 15px;
   box-shadow: 0 20px 50px rgba(141, 157, 174, .4);
   margin: 2vh auto 0 auto;
@@ -108,11 +132,12 @@ body {
   > .code-result__content {
     width: 100%;
     height: 30vh;
-    background-color: #c6d6e7;
+    background-color: lighten($primary-color, 8%);
     border: none;
     border-radius: 15px;
-    color: #5f6f80;
+    color: lighten($text-color, 30%);
     cursor: default;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 20px;
@@ -120,9 +145,9 @@ body {
     z-index: 3;
   }
   > .compression-value {
-    background-color: #c6d6e7;
+    background-color: lighten($primary-color, 8%);
     border-radius: 6px;
-    color: #1f2f40;
+    color: $text-color;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     opacity: 0;
@@ -145,7 +170,7 @@ body {
     width: 100%;
     max-width: 212px;
     height: 8px;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, .15);
     border-radius: 4px;
     opacity: 0;
     position: absolute;
@@ -179,7 +204,7 @@ body {
       opacity: 1;
     }
     > i {
-      color: #1f2f40;
+      color: $text-color;
       font-size: 22px;
       margin-left: 8px;
       position: relative;
@@ -188,9 +213,9 @@ body {
         border-radius: 3px;
         color: white;
         content: attr(data-title);
-        display: none;
         font-size: 11px;
         font-style: normal;
+        opacity: 0;
         padding: 5px 8px;
         position: absolute;
         top: -28px;
@@ -199,10 +224,10 @@ body {
         transform: translateX(-50%);
       }
       &:hover {
-        color: #1f2f40;
+        color: darken($text-color, 10%);
         cursor: pointer;
         &:after {
-          display: block;
+          animation: fade-in .2s forwards;
         }
       }
     }
@@ -224,8 +249,8 @@ body {
   &:after {
     width: 64px;
     height: 64px;
-    border: 6px solid #7559b1;
-    border-color: #7559b1 transparent #7559b1 transparent;
+    border: 6px solid rgba(0, 60, 90, .7);
+    border-color: rgba(0, 60, 90, .7) transparent rgba(0, 60, 90, .7) transparent;
     border-radius: 50%;
     content: ' ';
     display: block;

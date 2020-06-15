@@ -7,6 +7,17 @@
   }
 }
 
+@keyframes show-notification {
+  0% {
+    opacity: 0;
+    top: 5vh;
+  }
+  100% {
+    opacity: 1;
+    top: 2vh;
+  }
+}
+
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);
