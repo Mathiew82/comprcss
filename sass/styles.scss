@@ -224,7 +224,7 @@ body {
         transform: translateX(-50%);
       }
       &:hover {
-        color: darken($text-color, 10%);
+        color: rgba(0, 0, 0, .9);
         cursor: pointer;
         &:after {
           animation: fade-in .2s forwards;
