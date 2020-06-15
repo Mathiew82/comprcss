@@ -249,8 +249,8 @@ body {
   &:after {
     width: 64px;
     height: 64px;
-    border: 6px solid rgba(0, 60, 90, .7);
-    border-color: rgba(0, 60, 90, .7) transparent rgba(0, 60, 90, .7) transparent;
+    border: 6px solid lighten($text-color, 30%);
+    border-color: lighten($text-color, 30%) transparent lighten($text-color, 30%) transparent;
     border-radius: 50%;
     content: ' ';
     display: block;
