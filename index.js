@@ -83,7 +83,7 @@ function firstPartCompression (code) {
     }
     if (
       code[i].length === 1 &&
-      code[i].match(/[a-z0-9\{\}\:\;\#\.\[\]\^\~\+\/\*\(\)\,\>\-]/i) ||
+      code[i].match(/[a-z0-9\{\}\:\;\#\.\[\]\^\~\+\/\*\(\)\,\>\@\%\-]/i) ||
       ((controlPoint === '}' && code[i] === ' ') || controlPoint === ':')
     ) {
       localResult += code[i]
@@ -97,19 +97,26 @@ function secondPartCompression (result) {
   result = result.replace(/ {/g, '{')
   result = result.replace(/: /g, ':')
   result = result.replace(/;}/g, '}')
+  result = result.replace(/}  /g, '}')
+  result = result.replace(/} /g, '}')
   result = result.replace(/0\./g, '.')
   result = result.replace(/ > /g, '>')
   result = result.replace(/ \+ /g, '+')
   result = result.replace(/ ~ /g, '~')
   result = result.replace(/, /g, ',')
+  return result
+}
 
+function removeComments (result) {
+  result = result.replace(/\/\*(.*)\*\//g, '')
   return result
 }
 
 function compressCss (code) {
   return new Promise(function (resolve, reject) {
     var
-    result = firstPartCompression(code)
+    result = removeComments(code)
+    result = firstPartCompression(result)
     result = secondPartCompression(result)
 
     beforeBytes = code.length

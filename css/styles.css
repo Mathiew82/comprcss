@@ -1,3 +1,20 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* line 3, ../sass/styles.scss */
 * {
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
@@ -7,83 +24,84 @@
   padding: 0;
 }
 
+/* line 12, ../sass/styles.scss */
 ::-moz-selection {
-  background-color: #9fafc0;
+  background-color: #5f6f80;
   color: white;
 }
 
+/* line 17, ../sass/styles.scss */
 ::selection {
-  background-color: #9fafc0;
+  background-color: #5f6f80;
   color: white;
 }
 
+/* line 22, ../sass/styles.scss */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
+/* line 26, ../sass/styles.scss */
 ::-webkit-scrollbar-track {
   background: transparent;
   margin: 20px;
 }
- 
+
+/* line 31, ../sass/styles.scss */
 ::-webkit-scrollbar-thumb {
   background: #6f7f90;
   border-radius: 4px;
 }
 
+/* line 36, ../sass/styles.scss */
 ::-webkit-scrollbar-thumb:hover {
-  background: #4f5f70;
+  background: #1f2f40;
 }
 
-textarea:focus, button:focus {
+/* line 40, ../sass/styles.scss */
+textarea:focus,
+button:focus {
   border: none;
   box-shadow: none;
   outline: none;
 }
 
+/* line 47, ../sass/styles.scss */
 body {
   background-color: #bfcfe0;
   color: black;
   padding: 10vh 15%;
 }
 
+/* line 53, ../sass/styles.scss */
 .wrapper-code-input {
   width: 100%;
   height: 39vh;
   margin: 0 auto;
   position: relative;
 }
-
+/* line 58, ../sass/styles.scss */
 .wrapper-code-input > .code-input {
   width: 100%;
   height: 39vh;
   background-color: #cfdff0;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 20px 50px rgba(141, 157, 174, .4);
-  color: #4f5f70;
+  box-shadow: 0 20px 50px rgba(141, 157, 174, 0.4);
+  color: #1f2f40;
   padding: 20px 20px 80px 20px;
   position: relative;
   resize: none;
   z-index: 1;
 }
-
+/* line 70, ../sass/styles.scss */
 .wrapper-code-input > .code-input:disabled {
   opacity: .5;
 }
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
+/* line 74, ../sass/styles.scss */
 .wrapper-code-input > .code-compress {
   background-color: #7559b1;
-  border: 2px solid rgba(255, 255, 255, .9);
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 6px;
   color: white;
   letter-spacing: 1px;
@@ -97,34 +115,35 @@ body {
   animation: fade-in 2s forwards;
   z-index: 3;
 }
-
+/* line 89, ../sass/styles.scss */
 .wrapper-code-input > .code-compress.hide {
   display: none;
 }
-
+/* line 92, ../sass/styles.scss */
 .wrapper-code-input > .code-compress:hover {
   background-color: #9579d1;
   cursor: pointer;
 }
 
+/* line 99, ../sass/styles.scss */
 .code-result {
   width: 100%;
   height: 39vh;
-  background-color: #cfdff0;
+  background-color: #c6d6e7;
   border-radius: 15px;
-  box-shadow: 0 20px 50px rgba(141, 157, 174, .4);
+  box-shadow: 0 20px 50px rgba(141, 157, 174, 0.4);
   margin: 2vh auto 0 auto;
   position: relative;
   z-index: 2;
 }
-
+/* line 108, ../sass/styles.scss */
 .code-result > .code-result__content {
   width: 100%;
   height: 30vh;
-  background-color: #cfdff0;
+  background-color: #c6d6e7;
   border: none;
   border-radius: 15px;
-  color: #9fafc0;
+  color: #5f6f80;
   cursor: default;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -132,11 +151,11 @@ body {
   resize: none;
   z-index: 3;
 }
-
+/* line 122, ../sass/styles.scss */
 .code-result > .compression-value {
-  background-color: #cfdff0;
+  background-color: #c6d6e7;
   border-radius: 6px;
-  color: #4f5f70;
+  color: #1f2f40;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
   opacity: 0;
@@ -147,22 +166,22 @@ body {
   transform: translateX(-50%);
   z-index: 4;
 }
-
+/* line 135, ../sass/styles.scss */
 .code-result > .compression-value.show {
   opacity: 1;
 }
-
+/* line 138, ../sass/styles.scss */
 .code-result > .compression-value > .compression-value__percentage {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 700;
 }
-
+/* line 144, ../sass/styles.scss */
 .code-result > .compression-level {
   width: 100%;
   max-width: 212px;
   height: 8px;
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   opacity: 0;
   position: absolute;
@@ -171,11 +190,11 @@ body {
   transform: translateX(-50%);
   z-index: 4;
 }
-
+/* line 156, ../sass/styles.scss */
 .code-result > .compression-level.show {
   opacity: 1;
 }
-
+/* line 159, ../sass/styles.scss */
 .code-result > .compression-level > .compression-level__bar {
   width: 50%;
   height: 8px;
@@ -186,7 +205,7 @@ body {
   top: 0;
   left: 0;
 }
-
+/* line 170, ../sass/styles.scss */
 .code-result > .compression-icons {
   display: flex;
   justify-content: flex-end;
@@ -196,20 +215,20 @@ body {
   right: 14px;
   z-index: 4;
 }
-
+/* line 178, ../sass/styles.scss */
 .code-result > .compression-icons.show {
   opacity: 1;
 }
-
+/* line 181, ../sass/styles.scss */
 .code-result > .compression-icons > i {
-  color: #4f5f70;
+  color: #1f2f40;
   font-size: 22px;
   margin-left: 8px;
   position: relative;
 }
-
+/* line 186, ../sass/styles.scss */
 .code-result > .compression-icons > i:after {
-  background-color: rgba(0, 0, 0, .9);
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 3px;
   color: white;
   content: attr(data-title);
@@ -223,16 +242,17 @@ body {
   text-align: center;
   transform: translateX(-50%);
 }
-
+/* line 201, ../sass/styles.scss */
 .code-result > .compression-icons > i:hover {
   color: #1f2f40;
   cursor: pointer;
 }
-
+/* line 204, ../sass/styles.scss */
 .code-result > .compression-icons > i:hover:after {
   display: block;
 }
 
+/* line 212, ../sass/styles.scss */
 .lds-dual-ring {
   width: 80px;
   height: 80px;
@@ -243,11 +263,11 @@ body {
   transform: translate(-50%, -50%);
   z-index: 3;
 }
-
+/* line 221, ../sass/styles.scss */
 .lds-dual-ring.show {
   display: inline-block;
 }
-
+/* line 224, ../sass/styles.scss */
 .lds-dual-ring:after {
   width: 64px;
   height: 64px;
@@ -258,13 +278,4 @@ body {
   display: block;
   margin: 8px;
   animation: lds-dual-ring 1.2s linear infinite;
-}
-
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
