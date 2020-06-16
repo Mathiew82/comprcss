@@ -54,8 +54,16 @@ body {
   }
 }
 
+.logo {
+  width: 170px;
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .notification {
-  background-color: rgba(0, 60, 90, .7);
+  background-color: rgba(20, 80, 110, .9);
   border-radius: 6px;
   color: white;
   cursor: default;

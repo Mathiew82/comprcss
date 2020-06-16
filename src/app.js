@@ -147,7 +147,16 @@ function copyToClipboard (element) {
   element.select()
   element.setSelectionRange(0, 99999) /*For mobile devices*/
   document.execCommand('copy')
+  clearSelection()
   showNotification('<i class="icon icon-ok"></i> Ya puedes pegar tu código!')
+}
+
+function clearSelection () {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
 }
 
 function showNotification (content) {
