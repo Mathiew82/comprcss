@@ -50,16 +50,20 @@ body {
   color: black;
   padding: 10vh 15%;
   @media (max-width: 768px) {
-    padding: 5vh 20px;
+    padding: 6vh 20px;
   }
 }
 
 .logo {
-  width: 170px;
+  height: 5vh;
   position: absolute;
   top: 14px;
   left: 50%;
   transform: translateX(-50%);
+  @media (max-width: 768px) {
+    height: 4vh;
+    top: 5px;
+  }
 }
 
 .notification {
@@ -134,7 +138,7 @@ body {
 .code-result {
   width: 100%;
   height: 39vh;
-  background-color: lighten($primary-color, 8%);
+  background-color: lighten($primary-color, 6%);
   border-radius: 15px;
   box-shadow: 0 20px 50px rgba(141, 157, 174, .4);
   margin: 2vh auto 0 auto;
@@ -143,7 +147,7 @@ body {
   > .code-result__content {
     width: 100%;
     height: 30vh;
-    background-color: lighten($primary-color, 8%);
+    background-color: lighten($primary-color, 6%);
     border: none;
     border-radius: 15px;
     color: lighten($text-color, 30%);
@@ -156,7 +160,7 @@ body {
     z-index: 3;
   }
   > .compression-value {
-    background-color: lighten($primary-color, 8%);
+    background-color: lighten($primary-color, 6%);
     border-radius: 6px;
     color: $text-color;
     font-family: Arial, Helvetica, sans-serif;

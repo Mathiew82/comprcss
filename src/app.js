@@ -144,11 +144,13 @@ function checkLoading (state) {
 }
 
 function copyToClipboard (element) {
+  element.removeAttribute('disabled')
   element.select()
   element.setSelectionRange(0, 99999) /*For mobile devices*/
   document.execCommand('copy')
   clearSelection()
-  showNotification('<i class="icon icon-ok"></i> Ya puedes pegar tu código!')
+  element.setAttribute('disabled', 'disabled')
+  showNotification('<i class="icon icon-ok"></i> Código copiado!')
 }
 
 function clearSelection () {
