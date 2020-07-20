@@ -1,23 +1,29 @@
-/** Script JS */
+/** ------------- */
+/** | Script JS | */
+/** ------------- */
+
 /** Global Variables */
-var loading     = false
-var beforeBytes = 0
-var afterBytes  = 0
-var percentage  = 0
+var
+loading     = false,
+beforeBytes = 0,
+afterBytes  = 0,
+percentage  = 0
 
 /** Onload Event */
 window.onload = function () {
   /** HTML Elements */
-  var codeInput           = document.querySelector('.code-input')
-  var codeCompress        = document.querySelector('.code-compress')
-  var codeResultContent   = document.querySelector('.code-result__content')
-  var copybutton          = document.querySelector('.copy-btn')
-  var resetButton         = document.querySelector('.reset-btn')
-  var compressionValue    = document.querySelector('.compression-value')
-  var compressionLevel    = document.querySelector('.compression-level')
-  var compressionLevelBar = document.querySelector('.compression-level__bar')
-  var compressionIcons    = document.querySelector('.compression-icons')
+  var
+  codeInput           = document.querySelector('.code-input'),
+  codeCompress        = document.querySelector('.code-compress'),
+  codeResultContent   = document.querySelector('.code-result__content'),
+  copybutton          = document.querySelector('.copy-btn'),
+  resetButton         = document.querySelector('.reset-btn'),
+  compressionValue    = document.querySelector('.compression-value'),
+  compressionLevel    = document.querySelector('.compression-level'),
+  compressionLevelBar = document.querySelector('.compression-level__bar'),
+  compressionIcons    = document.querySelector('.compression-icons')
 
+  /*+ Focus Start */
   codeInput.focus()
 
   /** Events */
@@ -69,9 +75,10 @@ window.onload = function () {
 
 /** Functions */
 function firstPartCompression (code) {
-  var localResult = ''
-  var controlPoint = '}'
-  
+  var
+  localResult  = '',
+  controlPoint = '}'
+
   for(var i = 0; i < code.length; i++) {
     if (
       code[i] === '{' ||
@@ -120,17 +127,18 @@ function compressCss (code) {
     result = secondPartCompression(result)
 
     beforeBytes = code.length
-    afterBytes = result.length
-    percentage = 100 - parseInt(afterBytes * 100 / beforeBytes)
+    afterBytes  = result.length
+    percentage  = 100 - parseInt(afterBytes * 100 / beforeBytes)
 
     resolve(result)
   })
 }
 
 function checkLoading (state) {
-  var loader = document.querySelector('.lds-dual-ring')
-  var button = document.querySelector('.code-compress')
-  var codeInput = document.querySelector('.code-input')
+  var
+  loader    = document.querySelector('.lds-dual-ring'),
+  button    = document.querySelector('.code-compress'),
+  codeInput = document.querySelector('.code-input')
 
   if (state) {
     loader.classList.add('show')
@@ -162,7 +170,8 @@ function clearSelection () {
 }
 
 function showNotification (content) {
-  var notification = document.createElement('div')
+  var
+  notification = document.createElement('div')
   notification.classList.add('notification')
   notification.innerHTML = content
   document.body.appendChild(notification)
