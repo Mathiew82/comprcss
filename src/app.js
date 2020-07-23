@@ -61,7 +61,7 @@ window.onload = function () {
         codeResultContent.innerHTML = result
 
         compressionValue.classList.add('show')
-        compressionValue.innerHTML = '<span class="compression-value__percentage">' + percentage + '%</span> de compresión | ' + beforeBytes + ' > ' + afterBytes + ' (bytes)'
+        compressionValue.innerHTML = '<span class="compression-value__percentage">' + percentage + '%</span> compression | ' + beforeBytes + ' > ' + afterBytes + ' (bytes)'
         compressionLevel.classList.add('show')
         compressionLevelBar.style.width = percentage + '%'
         compressionIcons.classList.add('show')
@@ -158,7 +158,7 @@ function copyToClipboard (element) {
   document.execCommand('copy')
   clearSelection()
   element.setAttribute('disabled', 'disabled')
-  showNotification('<i class="icon icon-ok"></i> Código copiado!')
+  showNotification('<i class="icon icon-ok"></i> Code copied!')
 }
 
 function clearSelection () {
