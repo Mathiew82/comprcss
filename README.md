@@ -2,7 +2,7 @@
 
 ### Simplest css code compressor
 
-[![HitCount](http://hits.dwyl.com/Mathiew82/comprcss.svg)](http://hits.dwyl.com/Mathiew82/comprcss)
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2FMathiew82%2Fcomprcss)
 ![Website](https://img.shields.io/website?down_color=lightgrey&down_message=offline&style=flat-square&up_color=green&up_message=online&url=https%3A%2F%2Fmathiew82.github.io%2Fcomprcss%2F)
 ![GitHub](https://img.shields.io/github/license/Mathiew82/comprcss?style=flat-square)
 
